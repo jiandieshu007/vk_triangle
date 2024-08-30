@@ -1,0 +1,26 @@
+#include "/Engine/Public/Platform.ush"
+
+matrix MVP;
+
+
+struct VSin
+{
+    float3 position : POSITION;
+};
+
+
+struct VSout
+{
+    float4 position : sv_position;
+};
+
+void VS(VSin input)
+{
+    float4 position : sv_position;
+    position = MVP * float4(input.position, 1.f);
+}
+
+float4 PS(void) : sv_target
+{
+    return float4(1.f, 0.6f, 0.5f, 1.f);
+}
